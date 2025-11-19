@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- KONFIGURASI UNTUK GOOGLE APPS SCRIPT (GAS) ---
     // GANTI 'YOUR_GAS_WEB_APP_URL' dengan URL Web App dari GAS Anda
-    const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwvL7jTI_L1EMe1DweGtL9-okYsfkv_LXgBv-u4SXjeK8zQHh28a3ACiZUzfoeuK8zC/exec';
+    const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwzjpvREYQzlyx7hLWNPh_LGizzD4ahuQDE0SW44rKJUMjRWUxxmytOPVlE7KodfOuw/exec';
 
     // --- ELEMEN DOM ---
     const signupForm = document.getElementById('signup-form');
@@ -122,4 +122,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ubah slide secara otomatis setiap 3 detik
     setInterval(nextSlide, 3000);
 });
+
 
