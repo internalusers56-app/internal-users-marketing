@@ -1,0 +1,287 @@
+/* --- Global Styles & Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- Main Layout --- */
+.main-wrapper {
+    width: 100%;
+    max-width: 900px;
+}
+
+.signup-card {
+    display: flex;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    min-height: 600px;
+}
+
+/* --- Sisi Kiri: Slideshow dengan Overlay --- */
+.card-left {
+    flex: 1;
+    position: relative; /* Diperlukan untuk positioning overlay dan dots */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+}
+
+.slides-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 3; /* Pastikan di atas overlay */
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #ffffff;
+}
+
+/* --- Overlay Gelap --- */
+.slider-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Warna hitam dengan transparansi 50% */
+    z-index: 1;
+}
+
+/* --- Overlay Teks (DIUBAH) --- */
+.slider-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Pusatkan sempurna */
+    text-align: center;
+    color: #ffffff;
+    z-index: 2; /* Berada di atas overlay gelap */
+    padding: 0 20px;
+    width: 95%; /* <-- PERUBAHAN: Lebar diatur menjadi 80% */
+}
+
+.slider-text h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.slider-text h1 span {
+    color: #4dabf7; /* Warna aksen untuk highlight */
+}
+
+.slider-text p {
+    font-size: 16px;
+    font-weight: 400;
+    /* max-width: 400px; DIHAPUS */
+    /* margin: 0 auto; DIHAPUS karena tidak lagi diperlukan */
+}
+
+/* --- Sisi Kanan: Form --- */
+.card-right {
+    flex: 1;
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1c1e21;
+    margin-bottom: 10px;
+}
+
+.form-header p {
+    font-size: 15px;
+    color: #606770;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #4b4f56;
+    font-size: 14px;
+}
+
+.input-group label i {
+    margin-right: 8px;
+    color: #007bff;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #dddfe2;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+#signup-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    margin-top: 10px;
+}
+
+#signup-btn:hover {
+    background-color: #0056b3;
+}
+
+#signup-btn:active {
+    transform: scale(0.98);
+}
+
+#signup-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: scale(1);
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #606770;
+}
+
+.login-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* --- Toast Notification --- */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateX(400px);
+    transition: transform 0.4s ease-in-out;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast.error {
+    background-color: #dc3545;
+}
+
+.toast i {
+    font-size: 20px;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .signup-card {
+        flex-direction: column;
+        max-width: 400px;
+    }
+
+    .card-left {
+        /* Sembunyikan slider di mobile untuk fokus ke form, atau tampilkan dengan tinggi lebih kecil */
+        display: none; 
+    }
+
+    .card-right {
+        padding: 30px 25px;
+    }
+
+    .form-header h2 {
+        font-size: 24px;
+    }
+}
