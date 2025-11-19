@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 no_whatsapp: no_whatsapp,
                 email: email,
                 password: password, // CATATAN: Seharusnya di-hash, tapi ini untuk simulasi
-                id_role: id_role,
-                is_active: true, // Default: true
+                id_role: "",
+                is_active: false, // Default: false
                 status_approval: 'Pending', // Default: Pending, menunggu persetujuan admin
                 created_at: now,
                 updated_at: now
@@ -104,3 +104,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setInterval(nextSlide, 3000);
 });
+
