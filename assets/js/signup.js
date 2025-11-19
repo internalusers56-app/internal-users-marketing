@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- GANTI DENGAN API ID ANDA DARI SHEETDB ---
+    // --- KONFIGURASI SHEETDB ---
+    // GANTI 'YOUR_API_ID' dengan API ID yang Anda dapatkan dari dashboard SheetDB
     const SHEETDB_API_ID = 'hnryotv4dhvzy'; 
     const SHEETDB_URL = `https://api.sheetdb.io/v1/api/${SHEETDB_API_ID}`;
 
@@ -8,45 +9,53 @@ document.addEventListener('DOMContentLoaded', () => {
     const signupBtn = document.getElementById('signup-btn');
     const toast = document.getElementById('toast');
 
-    // --- FUNGSI NOTIFIKASI TOAST ---
+    // --- FUNGSI UNTUK MENAMPILKAN NOTIFIKASI (TOAST) ---
+    // Menampilkan pesan sukses atau error kepada pengguna.
     function showToast(message, type = 'success') {
-        toast.className = `toast ${type}`;
+        toast.className = `toast ${type}`; // Menambah class 'success' atau 'error'
         toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i> ${message}`;
         toast.classList.add('show');
-        setTimeout(() => { toast.classList.remove('show'); }, 4000);
+
+        // Sembunyikan toast setelah 4 detik
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 4000);
     }
 
-    // --- LOGIKA SIGNUP KE SHEETDB ---
+    // --- LOGIKA UTAMA SAAT FORM DIKIRIM (SIGNUP) ---
     signupForm.addEventListener('submit', async (event) => {
+        // Mencegah form melakukan reload halaman default
         event.preventDefault();
 
-        // 1. Kunci tombol dan ubah teks
+        // 1. Nonaktifkan tombol dan ubah teks untuk memberi feedback visual
         signupBtn.disabled = true;
         signupBtn.textContent = 'Mendaftarkan...';
 
         try {
-            // 2. Ambil nilai dari form
+            // 2. Ambil semua nilai dari input form
             const fullname = document.getElementById('fullname').value;
             const no_whatsapp = document.getElementById('no_whatsapp').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            // 3. Siapkan data untuk dikirim
+            // 3. Siapkan data yang akan dikirim ke SheetDB
             const now = new Date().toISOString();
             const newUserData = {
-                id: `users-${Date.now()}`, // Buat ID unik
+                id: `users-${Date.now()}`, // Buat ID unik berdasarkan timestamp
                 fullname: fullname,
                 no_whatsapp: no_whatsapp,
                 email: email,
-                password: password, // CATATAN: Seharusnya di-hash, tapi ini untuk simulasi
-                id_role: "",
-                is_active: false, // Default: false
-                status_approval: 'Pending', // Default: Pending, menunggu persetujuan admin
+                // PENTINGAN: Password seharusnya di-hash di sisi server untuk keamanan.
+                // Untuk simulasi ini, kita kirim plain text.
+                password: password, 
+                id_role: "", // Role kosong, menunggu persetujuan admin
+                is_active: false, // User belum aktif hingga disetujui
+                status_approval: 'Pending', // Status awal adalah 'Pending'
                 created_at: now,
                 updated_at: now
             };
 
-            // 4. Kirim data ke SheetDB
+            // 4. Kirim data ke SheetDB menggunakan metode POST
             const response = await fetch(SHEETDB_URL, {
                 method: 'POST',
                 headers: {
@@ -55,45 +64,56 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(newUserData)
             });
 
+            // 5. Periksa apakah pengiriman berhasil
             const result = await response.json();
 
             if (response.ok && result) {
+                // Jika berhasil, tampilkan pesan sukses
                 showToast('Pendaftaran berhasil! Menunggu persetujuan admin.', 'success');
-                signupForm.reset();
+                signupForm.reset(); // Kosongkan form
+                
+                // Arahkan pengguna ke halaman login setelah 2 detik
                 setTimeout(() => {
-                    window.location.href = 'index.html'; // Arahkan ke login
+                    window.location.href = 'index.html';
                 }, 2000);
             } else {
+                // Jika gagal, tampilkan pesan error dari server
                 showToast(result.error || 'Terjadi kesalahan saat mendaftar.', 'error');
             }
 
         } catch (error) {
+            // Tangani error jaringan atau error lainnya
             console.error("Signup Error:", error);
             showToast('Terjadi kesalahan jaringan. Silakan coba lagi.', 'error');
         } finally {
-            // 5. Buka kunci tombol setelah proses selesai
+            // 6. Aktifkan kembali tombol dan kembalikan teks aslinya, terlepas dari hasilnya
             signupBtn.disabled = false;
             signupBtn.textContent = 'Daftar Sekarang';
         }
     });
 
-    // --- LOGIKA SLIDESHOW (Sama dengan halaman lain) ---
+    // --- LOGIKA UNTUK SLIDESHOW GAMBAR (Sama dengan halaman lain) ---
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
     let currentSlide = 0;
 
     function showSlide(index) {
+        // Sembunyikan semua slide dan hapus class 'active' dari semua dots
         slides.forEach(slide => slide.classList.remove('active'));
         dots.forEach(dot => dot.classList.remove('active'));
+
+        // Tampilkan slide dan dot yang dipilih
         slides[index].classList.add('active');
         dots[index].classList.add('active');
     }
 
     function nextSlide() {
+        // Pindah ke slide berikutnya, kembali ke awal jika sudah di akhir
         currentSlide = (currentSlide + 1) % slides.length;
         showSlide(currentSlide);
     }
 
+    // Tambahkan event listener untuk setiap dot agar bisa diklik
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             currentSlide = index;
@@ -101,8 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Ubah slide secara otomatis setiap 3 detik
     setInterval(nextSlide, 3000);
 });
-
-
-
