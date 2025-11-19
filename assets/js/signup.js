@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- GANTI DENGAN API ID ANDA DARI SHEETDB ---
-    const SHEETDB_API_ID = 'https://sheetdb.io/api/v1/hnryotv4dhvzy'; 
+    const SHEETDB_API_ID = 'hnryotv4dhvzy'; 
     const SHEETDB_URL = `https://api.sheetdb.io/v1/api/${SHEETDB_API_ID}`;
 
     // --- ELEMEN DOM ---
@@ -104,4 +104,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setInterval(nextSlide, 3000);
 });
+
 
