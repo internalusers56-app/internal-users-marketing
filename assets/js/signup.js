@@ -30,15 +30,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const no_whatsapp = document.getElementById('no_whatsapp').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const id_role = document.getElementById('id_role').value;
 
             // 3. Siapkan data untuk dikirim
             const newUserData = {
+                id: `users-${timestamp.getTime()}`,
                 fullname: fullname,
                 no_whatsapp: no_whatsapp,
                 email: email,
-                password: password,
-                id_role: id_role
+                password: password, // CATATAN: Seharusnya di-hash di sisi server untuk keamanan
+                id_role: "",
+                is_active: false, // Default: false, menunggu persetujuan admin
+                status_approval: 'Pending', // Status awal adalah 'Pending'
+                created_at: timestamp, // SESUAI: 'creat_at'
+                updated_at: timestamp  // SESUAI: 'update_at'
             };
 
             // 4. Kirim data ke Web App GAS
@@ -99,3 +103,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setInterval(nextSlide, 3000);
 });
+
