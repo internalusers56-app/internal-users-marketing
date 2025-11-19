@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Monitoring</title>
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- TAMBAHKAN LIBRARY CHART.JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- ==================== SIDEBAR KIRI ==================== -->
+        <aside class="sidebar" id="sidebar">
+            <!-- ... (Isi sidebar tidak berubah) ... -->
+            <div class="sidebar-header">
+                <h2 class="logo"><i class="fas fa-chart-line"></i><span class="menu-text">Internal</span></h2>
+                <button class="toggle-btn" id="sidebar-toggle"><i class="fas fa-chevron-left"></i></button>
+            </div>
+            <nav class="sidebar-nav">
+                <ul class="menu">
+                    <li class="menu-item active" data-page="dashboard"><a href="#"><i class="fas fa-tachometer-alt"></i><span class="menu-text">Dashboard</span></a></li>
+                    <li class="menu-item" data-page="todolist"><a href="#"><i class="fas fa-list-check"></i><span class="menu-text">Todolist</span></a></li>
+                    <li class="menu-item" data-page="marketing-plan"><a href="#"><i class="fas fa-bullseye"></i><span class="menu-text">Marketing Plan</span></a></li>
+                    <li class="menu-item" data-page="register-aplikasi"><a href="#"><i class="fas fa-file-plus"></i><span class="menu-text">Register Aplikasi</span></a></li>
+                    <li class="menu-item" data-page="pengiriman-polis"><a href="#"><i class="fas fa-truck"></i><span class="menu-text">Pengiriman Polis</span></a></li>
+                    <li class="menu-item" data-page="register-klaim"><a href="#"><i class="fas fa-clipboard-list"></i><span class="menu-text">Register Klaim</span></a></li>
+                    <li class="menu-item has-submenu">
+                        <a href="#" class="submenu-toggle"><i class="fas fa-cog"></i><span class="menu-text">Pengaturan</span><i class="fas fa-chevron-down submenu-arrow"></i></a>
+                        <ul class="submenu">
+                            <li class="submenu-item" data-page="pengaturan-user"><a href="#"><i class="fas fa-users"></i><span class="menu-text">Pengaturan User</span></a></li>
+                            <li class="submenu-item" data-page="pengaturan-role"><a href="#"><i class="fas fa-user-shield"></i><span class="menu-text">Pengaturan Role</span></a></li>
+                            <li class="submenu-item" data-page="approval-admin"><a href="#"><i class="fas fa-user-check"></i><span class="menu-text">Approval Admin</span></a></li>
+                            <li class="submenu-item" data-page="pengaturan-marketing"><a href="#"><i class="fas fa-bullhorn"></i><span class="menu-text">Pengaturan Marketing</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="menu-logout"><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i><span class="menu-text">Log Out</span></a></div>
+            </nav>
+        </aside>
+
+        <!-- ==================== KONTEN UTAMA ==================== -->
+        <div class="main-content">
+            <header class="top-header">
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+                <h1 class="page-title" id="page-title">Dashboard</h1>
+                <div class="user-info"><span class="user-name">John Doe</span><img src="https://i.pravatar.cc/40?img=5" alt="User Avatar" class="user-avatar"></div>
+            </header>
+            <main class="content-area" id="content-area">
+                <!-- Konten akan dimuat di sini oleh JavaScript -->
+            </main>
+        </div>
+    </div>
+
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistem Monitoring Internal</title>
+    <link rel="stylesheet" href="assets/css/login.css">
+    <!-- Menggunakan ikon dari Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <div class="signup-card">
+            <!-- Sisi Kiri: Slideshow Gambar, Overlay, dan Teks (Sama dengan Signup) -->
+            <div class="card-left">
+                <div class="slides-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="slide active">
+                        <img src="assets/images/img-1.png" alt="Monitoring Internal 1">
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <img src="assets/images/img-2.png" alt="Monitoring Internal 2">
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <img src="assets/images/img-3.png" alt="Monitoring Internal 3">
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="slide">
+                        <img src="assets/images/img-4.png" alt="Monitoring Internal 4">
+                    </div>
+                </div>
+                <!-- Indikator Dots Slider -->
+                <div class="slider-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                    <span class="dot" data-slide="3"></span>
+                </div>
+                <!-- Overlay Gelap -->
+                <div class="slider-overlay"></div>
+                <!-- Overlay Teks -->
+                <div class="slider-text">
+                    <h1>Manajemen <span>"Monitoring Marketing"</span></h1>
+                    <p>Monitoring Pending Pekerjaan Marketing Secara Real-Time dan Terpusat</p>
+                </div>
+            </div>
+
+            <!-- Sisi Kanan: Form Login -->
+            <div class="card-right">
+                <div class="form-header">
+                    <h2>Masuk ke Akun Anda</h2>
+                    <p>Selamat datang kembali! Silakan masuk untuk melanjutkan ke sistem monitoring.</p>
+                </div>
+                
+                <form id="login-form">
+                    <div class="input-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="email" name="email" placeholder="nama@perusahaan.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password"><i class="fas fa-lock"></i> Password</label>
+                        <input type="password" id="password" name="password" placeholder="Masukkan password Anda" required>
+                    </div>
+                    <button type="submit" id="login-btn">Masuk</button>
+                </form>
+
+                <div class="form-footer">
+                    <a href="forgot-password.html" class="forgot-password-link">Lupa Password?</a>
+                </div>
+
+                <p class="login-link">Belum punya akun? <a href="signup.html">Daftar di sini</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Elemen Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="assets/js/login.js"></script>
+</body>
+</html>

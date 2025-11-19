@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Sistem Monitoring Internal</title>
+    <link rel="stylesheet" href="/assets/css/signup.css">
+    <!-- Menggunakan ikon dari Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <div class="signup-card">
+            <!-- Sisi Kiri: Slideshow Gambar, Overlay, dan Teks -->
+            <div class="card-left">
+                <div class="slides-wrapper">
+                    <!-- Slide 1: Sesi Diskusi di Whiteboard -->
+                    <div class="slide active">
+                        <img src="assets/images/img-1.png" alt="Monitoring Internal 1">
+                    </div>
+                    <!-- Slide 2: Dashboard Monitoring -->
+                    <div class="slide">
+                        <img src="assets/images/img-2.png" alt="Monitoring Internal 2">
+                    </div>
+                    <!-- Slide 3: Kolaborasi Tim -->
+                    <div class="slide">
+                        <img src="assets/images/img-3.png" alt="Monitoring Internal 3">
+                    </div>
+                    <!-- Slide 4: Infrastruktur Server -->
+                    <div class="slide">
+                        <img src="assets/images/img-4.png" alt="Monitoring Internal 4">
+                    </div>
+                </div>
+                <!-- Indikator Dots Slider -->
+                <div class="slider-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                    <span class="dot" data-slide="3"></span>
+                </div>
+                <!-- Overlay Gelap -->
+                <div class="slider-overlay"></div>
+                <!-- Overlay Teks -->
+                <div class="slider-text">
+                    <h1>Manajemen <span>"Monitoring Marketing"</span></h1>
+                    <p>Monitoring Pending Pekerjaan Marketing Secara Real-Time dan Terpusat</p>
+                </div>
+            </div>
+
+            <!-- Sisi Kanan: Form Signup -->
+            <div class="card-right">
+                <div class="form-header">
+                    <h2>Buat Akun Baru</h2>
+                    <p>Bergabunglah dengan Sistem Monitoring Internal kami untuk mulai mengelola dan memantau proses bisnis secara efisien.</p>
+                </div>
+                
+                <form id="signup-form">
+                    <div class="input-group">
+                        <label for="fullname"><i class="fas fa-user"></i> Nama Lengkap</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Masukkan nama lengkap Anda" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="whatsapp"><i class="fas fa-phone"></i> No. WhatsApp</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="contoh: 08123456789" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="email" name="email" placeholder="nama@perusahaan.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password"><i class="fas fa-lock"></i> Password</label>
+                        <input type="password" id="password" name="password" placeholder="Buat password yang kuat" required>
+                    </div>
+                    <button type="submit" id="signup-btn">Daftar Sekarang</button>
+                </form>
+
+                <p class="login-link">Sudah punya akun? <a href="login.html">Masuk di sini</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Elemen Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="assets/js/signup.js"></script>
+</body>
+</html>
