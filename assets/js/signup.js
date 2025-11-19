@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const no_whatsapp = document.getElementById('no_whatsapp').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const id_role = document.getElementById('id_role').value;
 
             // 3. Siapkan data untuk dikirim
             const now = new Date().toISOString();
@@ -104,5 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setInterval(nextSlide, 3000);
 });
+
 
 
