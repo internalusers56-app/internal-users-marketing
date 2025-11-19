@@ -1,0 +1,127 @@
+<!-- 4 Cards di Atas -->
+<div class="summary-cards">
+    <div class="card">
+        <i class="fas fa-clock"></i>
+        <div class="card-value">30</div>
+        <div class="card-title">Klaim Pending</div>
+    </div>
+    <div class="card">
+        <i class="fas fa-spinner"></i>
+        <div class="card-value">15</div>
+        <div class="card-title">Klaim On Proses</div>
+    </div>
+    <div class="card">
+        <i class="fas fa-check-circle"></i>
+        <div class="card-value">55</div>
+        <div class="card-title">Klaim Selesai</div>
+    </div>
+    <div class="card">
+        <i class="fas fa-times-circle"></i>
+        <div class="card-value">8</div>
+        <div class="card-title">Klaim Ditolak</div>
+    </div>
+</div>
+
+<!-- Area Filter dan Tombol Aksi -->
+<div class="action-bar">
+    <div class="filter-controls">
+        <select id="search-option">
+            <option value="all">Cari di Seluruh Kolom</option>
+            <option value="advanced">Pencarian Lanjutan</option>
+        </select>
+        <input type="text" id="search-input" placeholder="Ketik untuk mencari...">
+    </div>
+    <div class="action-buttons">
+        <button class="btn-export"><i class="fas fa-download"></i> Export</button>
+        <button class="btn-add" id="add-plan-btn"><i class="fas fa-plus"></i> Tambah</button>
+    </div>
+</div>
+
+<!-- Pencarian Lanjutan (Awalnya Tersembunyi) -->
+<div class="advanced-search" id="advanced-search" style="display: none;">
+    <div class="date-range">
+        <label>Dari Tanggal:</label>
+        <input type="date" id="date-from">
+        <label>Sampai Tanggal:</label>
+        <input type="date" id="date-to">
+    </div>
+    <div class="status-filter">
+        <label>Status:</label>
+        <select id="status-filter">
+            <option value="">Semua Status</option>
+            <option value="Pending">Pending</option>
+            <option value="On Proses">On Proses</option>
+            <option value="Selesai">Selesai</option>
+            <option value="Ditolak">Ditolak</option>
+        </select>
+    </div>
+    <div class="search-actions">
+        <button id="advanced-search-btn" class="btn-search">Cari</button>
+        <button id="reset-search-btn" class="btn-reset">Batal</button>
+    </div>
+</div>
+
+<!-- Tabel Data -->
+<div class="table-container">
+    <table id="register-klaim-table">
+        <thead>
+            <tr>
+                <th>No. Register</th>
+                <th>No. Polis</th>
+                <th>Marketing</th>
+                <th>Nama Nasabah</th>
+                <th>Informasi Klaim</th>
+                <th>Tgl. Lapor</th>
+                <th>Status</th>
+                <th>Respon</th>
+                <th>Tgl. Selesai</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>REG-2023-001</td><td>POL-001</td><td>Andi Pratama</td><td>Budi Santoso</td><td>Kecelakaan mobil</td><td>2023-11-20</td><td class="status-pending">Pending</td><td>-</td><td>-</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>REG-2023-002</td><td>POL-002</td><td>Siti Nurhaliza</td><td>Dewi Lestari</td><td>Rawat inap</td><td>2023-11-21</td><td class="status-on-proses">On Proses</td><td>Dokumen sedang diverifikasi</td><td>-</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>REG-2023-003</td><td>POL-003</td><td>Eko Prasetyo</td><td>Joko Widodo</td><td>Kerusakan mobil</td><td>2023-11-19</td><td class="status-selesai">Selesai</td><td>Disetujui</td><td>2023-11-22</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>REG-2023-004</td><td>POL-004</td><td>Rina Wulandari</td><td>Fajar A.</td><td>Kehilangan barang</td><td>2023-11-22</td><td class="status-on-proses">On Proses</td><td>Menunggu laporan polisi</td><td>-</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>REG-2023-005</td><td>POL-005</td><td>Hendra K.</td><td>Lestari W.</td><td>Kecelakaan motor</td><td>2023-11-18</td><td class="status-ditolak">Ditolak</td><td>Tidak sesuai ketentuan polis</td><td>-</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>REG-2023-006</td><td>POL-006</td><td>Andi Pratama</td><td>Siti Nurhaliza</td><td>Pengobatan gigi</td><td>2023-11-17</td><td class="status-selesai">Selesai</td><td>Disetujui (reimburse)</td><td>2023-11-20</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>REG-2023-007</td><td>POL-007</td><td>Budi Santoso</td><td>Eko Prasetyo</td><td>Sakit kritis</td><td>2023-11-21</td><td class="status-pending">Pending</td><td>-</td><td>-</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>REG-2023-008</td><td>POL-008</td><td>Dewi Lestari</td><td>Joko Widodo</td><td>Kematian</td><td>2023-11-16</td><td class="status-on-proses">On Proses</td><td>Sedang proses investigasi</td><td>-</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>REG-2023-009</td><td>POL-009</td><td>Eko Prasetyo</td><td>Rina Wulandari</td><td>Cacat tetap</td><td>2023-11-15</td><td class="status-selesai">Selesai</td><td>Disetujui</td><td>2023-11-21</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>REG-2023-010</td><td>POL-010</td><td>Rina Wulandari</td><td>Hendra K.</td><td>Kerusakan akibat bencana alam</td><td>2023-11-14</td><td class="status-selesai">Selesai</td><td>Disetujui</td><td>2023-11-19</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Paginasi -->
+<div class="pagination">
+    <button class="page-btn" id="prev-page">&laquo; Previous</button>
+    <button class="page-btn active">1</button>
+    <button class="page-btn">2</button>
+    <button class="page-btn">3</button>
+    <button class="page-btn">...</button>
+    <button class="page-btn">10</button>
+    <button class="page-btn" id="next-page">Next &raquo;</button>
+</div>
+
+<!-- Modal Popup untuk Tambah/Update Data -->
+<div id="plan-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Tambah Register Klaim</h2>
+            <span class="close-btn">&times;</span>
+        </div>
+        <form id="plan-form">
+            <div class="form-group"><label for="no-register">No. Register</label><input type="text" id="no-register" required></div>
+            <div class="form-group"><label for="no-polis">No. Polis</label><input type="text" id="no-polis" required></div>
+            <div class="form-group"><label for="nama-marketing">Nama Marketing</label><input type="text" id="nama-marketing" required></div>
+            <div class="form-group"><label for="nama-nasabah">Nama Nasabah</label><input type="text" id="nama-nasabah" required></div>
+            <div class="form-group"><label for="informasi-klaim">Informasi Klaim</label><textarea id="informasi-klaim" rows="3"></textarea></div>
+            <div class="form-group"><label for="tanggal-lapor">Tanggal Lapor</label><input type="date" id="tanggal-lapor" required></div>
+            <div class="form-group"><label for="status-klaim">Status Klaim</label><select id="status-klaim" required><option value="">Pilih Status</option><option value="Pending">Pending</option><option value="On Proses">On Proses</option><option value="Selesai">Selesai</option><option value="Ditolak">Ditolak</option></select></div>
+            <div class="form-group"><label for="respon-status">Respon Status</label><input type="text" id="respon-status"></div>
+            <div class="form-group"><label for="tanggal-selesai">Tanggal Selesai</label><input type="date" id="tanggal-selesai"></div>
+            <div class="form-actions"><button type="submit" class="btn-submit">Simpan</button><button type="button" class="btn-cancel">Batal</button></div>
+        </form>
+    </div>
+</div>

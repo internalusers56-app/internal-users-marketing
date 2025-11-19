@@ -1,0 +1,125 @@
+<!-- 3 Cards di Atas -->
+<div class="summary-cards">
+    <div class="card">
+        <i class="fas fa-check-double"></i>
+        <div class="card-value">75</div>
+        <div class="card-title">Polis Terkirim</div>
+    </div>
+    <div class="card">
+        <i class="fas fa-truck-loading"></i>
+        <div class="card-value">12</div>
+        <div class="card-title">Polis dalam Pengiriman</div>
+    </div>
+    <div class="card">
+        <i class="fas fa-undo"></i>
+        <div class="card-value">3</div>
+        <div class="card-title">Polis Retur</div>
+    </div>
+</div>
+
+<!-- Area Filter dan Tombol Aksi -->
+<div class="action-bar">
+    <div class="filter-controls">
+        <select id="search-option">
+            <option value="all">Cari di Seluruh Kolom</option>
+            <option value="advanced">Pencarian Lanjutan</option>
+        </select>
+        <input type="text" id="search-input" placeholder="Ketik untuk mencari...">
+    </div>
+    <div class="action-buttons">
+        <button class="btn-export"><i class="fas fa-download"></i> Export</button>
+        <button class="btn-add" id="add-plan-btn"><i class="fas fa-plus"></i> Tambah</button>
+    </div>
+</div>
+
+<!-- Pencarian Lanjutan (Awalnya Tersembunyi) -->
+<div class="advanced-search" id="advanced-search" style="display: none;">
+    <div class="date-range">
+        <label>Dari Tanggal:</label>
+        <input type="date" id="date-from">
+        <label>Sampai Tanggal:</label>
+        <input type="date" id="date-to">
+    </div>
+    <div class="status-filter">
+        <label>Status:</label>
+        <select id="status-filter">
+            <option value="">Semua Status</option>
+            <option value="Terkirim">Terkirim</option>
+            <option value="dalam pengiriman">Dalam Pengiriman</option>
+            <option value="Retur">Retur</option>
+        </select>
+    </div>
+    <div class="search-actions">
+        <button id="advanced-search-btn" class="btn-search">Cari</button>
+        <button id="reset-search-btn" class="btn-reset">Batal</button>
+    </div>
+</div>
+
+<!-- Tabel Data -->
+<div class="table-container">
+    <table id="pengiriman-polis-table">
+        <thead>
+            <tr>
+                <th>ID Pengiriman</th>
+                <th>Marketing</th>
+                <th>Nama Nasabah</th>
+                <th>Alamat</th>
+                <th>Informasi</th>
+                <th>Tgl Kirim</th>
+                <th>Ekspedisi</th>
+                <th>No. Resi</th>
+                <th>Status</th>
+                <th>Tgl Diterima</th>
+                <th>Penerima</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>KRM-001</td><td>Andi Pratama</td><td>Budi Santoso</td><td>Jl. Merdeka No. 10, Jakarta</td><td>Dokumen Asuransi Jiwa</td><td>2023-11-20</td><td>JNE</td><td>JP0012345678</td><td class="status-terkirim">Terkirim</td><td>2023-11-21</td><td>Budi Santoso</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>KRM-002</td><td>Siti Nurhaliza</td><td>Dewi Lestari</td><td>Jl. Sudirman No. 55, Bandung</td><td>Dokumen Asuransi Kendaraan</td><td>2023-11-21</td><td>TIKI</td><td>TK0098765432</td><td class="status-dalam-pengiriman">Dalam Pengiriman</td><td>-</td><td>-</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>KRM-003</td><td>Eko Prasetyo</td><td>Joko Widodo</td><td>Jl. Gatot Subroto No. 1, Surabaya</td><td>Dokumen Asuransi Kesehatan</td><td>2023-11-19</td><td>POS Indonesia</td><td>PS0011223344</td><td class="status-terkirim">Terkirim</td><td>2023-11-20</td><td>Joko Widodo</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>KRM-004</td><td>Rina Wulandari</td><td>Fajar A.</td><td>Jl. Pahlawan No. 88, Medan</td><td>Dokumen Asuransi Properti</td><td>2023-11-22</td><td>J&T</td><td>JN5566778899</td><td class="status-dalam-pengiriman">Dalam Pengiriman</td><td>-</td><td>-</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>KRM-005</td><td>Hendra K.</td><td>Lestari W.</td><td>Jl. Hayam Wuruk No. 33, Semarang</td><td>Dokumen Asuransi Jiwa</td><td>2023-11-18</td><td>SiCepat</td><td>SC0033445566</td><td class="status-retur">Retur</td><td>-</td><td>-</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>KRM-006</td><td>Andi Pratama</td><td>Siti Nurhaliza</td><td>Jl. Thamrin No. 5, Jakarta</td><td>Dokumen Asuransi Pendidikan</td><td>2023-11-17</td><td>JNE</td><td>JP0077889900</td><td class="status-terkirim">Terkirim</td><td>2023-11-18</td><td>Siti Nurhaliza</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>KRM-007</td><td>Budi Santoso</td><td>Eko Prasetyo</td><td>Jl. Asia Afrika No. 77, Bandung</td><td>Dokumen Asuransi Kendaraan</td><td>2023-11-21</td><td>TIKI</td><td>TK0112233445</td><td class="status-dalam-pengiriman">Dalam Pengiriman</td><td>-</td><td>-</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>KRM-008</td><td>Dewi Lestari</td><td>Rina Wulandari</td><td>Jl. Gajah Mada No. 99, Surabaya</td><td>Dokumen Asuransi Kesehatan</td><td>2023-11-20</td><td>POS Indonesia</td><td>PS0055667788</td><td class="status-terkirim">Terkirim</td><td>2023-11-21</td><td>Rina Wulandari</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>KRM-009</td><td>Eko Prasetyo</td><td>Hendra K.</td><td>Jl. Diponegoro No. 21, Medan</td><td>Dokumen Asuransi Properti</td><td>2023-11-16</td><td>J&T</td><td>JN9988776655</td><td class="status-terkirim">Terkirim</td><td>2023-11-18</td><td>Hendra K.</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>KRM-010</td><td>Rina Wulandari</td><td>Lestari W.</td><td>Jl. Imam Bonjol No. 44, Padang</td><td>Dokumen Asuransi Jiwa</td><td>2023-11-22</td><td>SiCepat</td><td>SC1122334455</td><td class="status-dalam-pengiriman">Dalam Pengiriman</td><td>-</td><td>-</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Paginasi -->
+<div class="pagination">
+    <button class="page-btn" id="prev-page">&laquo; Previous</button>
+    <button class="page-btn active">1</button>
+    <button class="page-btn">2</button>
+    <button class="page-btn">3</button>
+    <button class="page-btn">...</button>
+    <button class="page-btn">10</button>
+    <button class="page-btn" id="next-page">Next &raquo;</button>
+</div>
+
+<!-- Modal Popup untuk Tambah/Update Data -->
+<div id="plan-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Tambah Pengiriman Polis</h2>
+            <span class="close-btn">&times;</span>
+        </div>
+        <form id="plan-form">
+            <div class="form-group"><label for="id-pengiriman">ID Pengiriman</label><input type="text" id="id-pengiriman" required></div>
+            <div class="form-group"><label for="marketing-nama">Marketing Nama</label><input type="text" id="marketing-nama" required></div>
+            <div class="form-group"><label for="nama-nasabah">Nama Nasabah</label><input type="text" id="nama-nasabah" required></div>
+            <div class="form-group"><label for="alamat-nasabah">Alamat Nasabah</label><textarea id="alamat-nasabah" rows="2"></textarea></div>
+            <div class="form-group"><label for="informasi">Informasi Pengiriman</label><input type="text" id="informasi" required></div>
+            <div class="form-group"><label for="tanggal-kirim">Tanggal Kirim</label><input type="date" id="tanggal-kirim" required></div>
+            <div class="form-group"><label for="jasa-ekspedisi">Jasa Ekspedisi</label><input type="text" id="jasa-ekspedisi" required></div>
+            <div class="form-group"><label for="no-resi">No. Resi</label><input type="text" id="no-resi" required></div>
+            <div class="form-group"><label for="status-pengiriman">Status Pengiriman</label><select id="status-pengiriman" required><option value="Terkirim">Terkirim</option><option value="dalam pengiriman">Dalam Pengiriman</option><option value="Retur">Retur</option></select></div>
+            <div class="form-group"><label for="tgl-diterima">Tgl Diterima Nasabah</label><input type="date" id="tgl-diterima"></div>
+            <div class="form-group"><label for="nama-penerima">Nama Penerima</label><input type="text" id="nama-penerima"></div>
+            <div class="form-actions"><button type="submit" class="btn-submit">Simpan</button><button type="button" class="btn-cancel">Batal</button></div>
+        </form>
+    </div>
+</div>

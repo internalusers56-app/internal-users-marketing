@@ -1,0 +1,152 @@
+<!-- 4 Cards di Atas -->
+<div class="dashboard-cards">
+    <div class="card">
+        <i class="fas fa-file-invoice"></i>
+        <div class="card-value">1,234</div>
+        <div class="card-title">Total Aplikasi</div>
+    </div>
+    <div class="card">
+        <i class="fas fa-truck-loading"></i>
+        <div class="card-value">987</div>
+        <div class="card-title">Polis Terkirim</div>
+    </div>
+    <div class="card">
+        <i class="fas fa-clipboard-check"></i>
+        <div class="card-value">456</div>
+        <div class="card-title">Klaim Diproses</div>
+    </div>
+    <div class="card">
+        <i class="fas fa-bullseye-arrow"></i>
+        <div class="card-value">78%</div>
+        <div class="card-title">Target Tercapai</div>
+    </div>
+</div>
+
+<div class="dashboard-grid">
+    <!-- 2 List Top -->
+    <div class="card">
+        <h3 class="card-title">Top 5 Agen</h3>
+        <ol class="top-list">
+            <li><span>Andi Pratama</span> <span>125 Polis</span></li>
+            <li><span>Siti Nurhaliza</span> <span>118 Polis</span></li>
+            <li><span>Budi Santoso</span> <span>110 Polis</span></li>
+            <li><span>Dewi Lestari</span> <span>95 Polis</span></li>
+            <li><span>Eko Prasetyo</span> <span>88 Polis</span></li>
+        </ol>
+    </div>
+    <div class="card">
+        <h3 class="card-title">Top 5 Produk</h3>
+        <ol class="top-list">
+            <li><span>Produk A (Asuransi Jiwa)</span> <span>350 Unit</span></li>
+            <li><span>Produk B (Asuransi Kesehatan)</span> <span>320 Unit</span></li>
+            <li><span>Produk C (Asuransi Kendaraan)</span> <span>280 Unit</span></li>
+            <li><span>Produk D (Asuransi Pendidikan)</span> <span>210 Unit</span></li>
+            <li><span>Produk E (Asuransi Rumah)</span> <span>180 Unit</span></li>
+        </ol>
+    </div>
+
+    <!-- 2 Grafik Batang -->
+    <div class="card chart-container">
+        <h3 class="card-title">Performa Bulanan</h3>
+        <canvas id="barChart1"></canvas>
+    </div>
+    <div class="card chart-container">
+        <h3 class="card-title">Produksi per Cabang</h3>
+        <canvas id="barChart2"></canvas>
+    </div>
+
+    <!-- 4 Grafik Donat -->
+    <div class="card chart-container">
+        <h3 class="card-title">Status Klaim</h3>
+        <canvas id="doughnutChart1"></canvas>
+    </div>
+    <div class="card chart-container">
+        <h3 class="card-title">Jenis Kelamin Nasabah</h3>
+        <canvas id="doughnutChart2"></canvas>
+    </div>
+    <div class="card chart-container">
+        <h3 class="card-title">Pembayaran</h3>
+        <canvas id="doughnutChart3"></canvas>
+    </div>
+    <div class="card chart-container">
+        <h3 class="card-title">Sumber Lead</h3>
+        <canvas id="doughnutChart4"></canvas>
+    </div>
+</div>
+
+<!-- Script untuk menginisialisasi grafik. Script ini akan dijalankan setelah konten dimuat -->
+<script>
+    // --- GRAFIK BATANG 1 ---
+    const barCtx1 = document.getElementById('barChart1').getContext('2d');
+    new Chart(barCtx1, {
+        type: 'bar',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun'],
+            datasets: [{
+                label: 'Aplikasi Baru',
+                data: [65, 78, 90, 81, 96, 115],
+                backgroundColor: 'rgba(74, 105, 189, 0.6)',
+                borderColor: 'rgba(74, 105, 189, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: { scales: { y: { beginAtZero: true } } }
+    });
+
+    // --- GRAFIK BATANG 2 ---
+    const barCtx2 = document.getElementById('barChart2').getContext('2d');
+    new Chart(barCtx2, {
+        type: 'bar',
+        data: {
+            labels: ['Jakarta', 'Surabaya', 'Bandung', 'Medan', 'Semarang'],
+            datasets: [{
+                label: 'Total Polis',
+                data: [320, 280, 250, 190, 210],
+                backgroundColor: 'rgba(46, 204, 113, 0.6)',
+                borderColor: 'rgba(46, 204, 113, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: { scales: { y: { beginAtZero: true } } }
+    });
+
+    // --- GRAFIK DONAT 1 ---
+    const doughnutCtx1 = document.getElementById('doughnutChart1').getContext('2d');
+    new Chart(doughnutCtx1, {
+        type: 'doughnut',
+        data: {
+            labels: ['Disetujui', 'Diproses', 'Ditolak'],
+            datasets: [{ data: [300, 150, 50], backgroundColor: ['#2ecc71', '#f39c12', '#e74c3c'] }]
+        }
+    });
+
+    // --- GRAFIK DONAT 2 ---
+    const doughnutCtx2 = document.getElementById('doughnutChart2').getContext('2d');
+    new Chart(doughnutCtx2, {
+        type: 'doughnut',
+        data: {
+            labels: ['Pria', 'Wanita'],
+            datasets: [{ data: [650, 480], backgroundColor: ['#3498db', '#e91e63'] }]
+        }
+    });
+
+    // --- GRAFIK DONAT 3 ---
+    const doughnutCtx3 = document.getElementById('doughnutChart3').getContext('2d');
+    new Chart(doughnutCtx3, {
+        type: 'doughnut',
+        data: {
+            labels: ['Transfer', 'Kartu Kredit', 'Tunai'],
+            datasets: [{ data: [450, 320, 150], backgroundColor: ['#9b59b6', '#1abc9c', '#f1c40f'] }]
+        }
+    });
+
+    // --- GRAFIK DONAT 4 ---
+    const doughnutCtx4 = document.getElementById('doughnutChart4').getContext('2d');
+    new Chart(doughnutCtx4, {
+        type: 'doughnut',
+        data: {
+            labels: ['Website', 'Sosial Media', 'Referral', 'Lainnya'],
+            datasets: [{ data: [400, 250, 200, 100], backgroundColor: ['#34495e', '#95a5a6', '#d35400', '#c0392b'] }]
+        }
+    });
+</script>

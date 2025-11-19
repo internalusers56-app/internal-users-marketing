@@ -1,0 +1,181 @@
+<!-- 3 Cards di Atas -->
+<div class="summary-cards">
+    <div class="card">
+        <i class="fas fa-check-circle"></i>
+        <div class="card-value">48</div>
+        <div class="card-title">Register Realisasi</div>
+    </div>
+    <div class="card">
+        <i class="fas fa-clock"></i>
+        <div class="card-value">25</div>
+        <div class="card-title">Register Pending</div>
+    </div>
+    <div class="card">
+        <i class="fas fa-times-circle"></i>
+        <div class="card-value">7</div>
+        <div class="card-title">Register Batal</div>
+    </div>
+</div>
+
+<!-- Area Filter dan Tombol Aksi -->
+<div class="action-bar">
+    <div class="filter-controls">
+        <select id="search-option">
+            <option value="all">Cari di Seluruh Kolom</option>
+            <option value="advanced">Pencarian Lanjutan</option>
+        </select>
+        <input type="text" id="search-input" placeholder="Ketik untuk mencari...">
+    </div>
+    <div class="action-buttons">
+        <button class="btn-export"><i class="fas fa-download"></i> Export</button>
+        <button class="btn-add" id="add-plan-btn"><i class="fas fa-plus"></i> Tambah</button>
+    </div>
+</div>
+
+<!-- Pencarian Lanjutan (Awalnya Tersembunyi) -->
+<div class="advanced-search" id="advanced-search" style="display: none;">
+    <div class="date-range">
+        <label>Dari Tanggal:</label>
+        <input type="date" id="date-from">
+        <label>Sampai Tanggal:</label>
+        <input type="date" id="date-to">
+    </div>
+    <div class="status-filter">
+        <label>Status:</label>
+        <select id="status-filter">
+            <option value="">Semua Status</option>
+            <option value="Realisasi">Realisasi</option>
+            <option value="Pending">Pending</option>
+            <option value="Batal">Batal</option>
+        </select>
+    </div>
+    <div class="search-actions">
+        <button id="advanced-search-btn" class="btn-search">Cari</button>
+        <button id="reset-search-btn" class="btn-reset">Batal</button>
+    </div>
+</div>
+
+<!-- Tabel Data -->
+<div class="table-container">
+    <table id="register-aplikasi-table">
+        <thead>
+            <tr>
+                <th>Tanggal</th>
+                <th>Type Business</th>
+                <th>Segment</th>
+                <th>Request Type</th>
+                <th>Request Name</th>
+                <th>Uraian</th>
+                <th>No. Request</th>
+                <th>ID Marketing</th>
+                <th>Result</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>2023-11-20</td><td>Kendaraan</td><td>Retail</td><td>Baru</td><td>Andi Pratama</td><td>Asuransi mobil Toyota Avanza</td><td>REQ-001</td><td>MKT-10</td><td class="status-realisasi">Realisasi</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>2023-11-21</td><td>Jiwa</td><td>Agent</td><td>Top Up</td><td>Siti Nurhaliza</td><td>Tambah manfaat asuransi jiwa</td><td>REQ-002</td><td>MKT-12</td><td class="status-pending">Pending</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>2023-11-19</td><td>Kesehatan</td><td>Corporate</td><td>Baru</td><td>PT. Maju Jaya</td><td>Paket asuransi karyawan</td><td>REQ-003</td><td>MKT-15</td><td class="status-realisasi">Realisasi</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>2023-11-22</td><td>Properti</td><td>Retail</td><td>Baru</td><td>Budi Santoso</td><td>Asuransi rumah di Perumahan Griya</td><td>REQ-004</td><td>MKT-08</td><td class="status-pending">Pending</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>2023-11-18</td><td>Kendaraan</td><td>Retail</td><td>Perpanjang</td><td>Dewi Lestari</td><td>Perpanjangan asuransi motor Honda</td><td>REQ-005</td><td>MKT-09</td><td class="status-batal">Batal</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>2023-11-17</td><td>Jiwa</td><td>Retail</td><td>Baru</td><td>Eko Prasetyo</td><td>Asuransi jiwa pendidikan anak</td><td>REQ-006</td><td>MKT-11</td><td class="status-realisasi">Realisasi</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>2023-11-21</td><td>Kesehatan</td><td>Agent</td><td>Baru</td><td>Fajar A.</td><td>Asuransi kesehatan individu</td><td>REQ-007</td><td>MKT-14</td><td class="status-pending">Pending</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>2023-11-16</td><td>Properti</td><td>Corporate</td><td>Baru</td><td>PT. Sejahtera Bersama</td><td>Asuransi pabrik dan gudang</td><td>REQ-008</td><td>MKT-07</td><td class="status-realisasi">Realisasi</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>2023-11-20</td><td>Kendaraan</td><td>Retail</td><td>Baru</td><td>Rina Wulandari</td><td>Asuransi mobil Mitsubishi Pajero</td><td>REQ-009</td><td>MKT-13</td><td class="status-pending">Pending</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>2023-11-15</td><td>Jiwa</td><td>Retail</td><td>Top Up</td><td>Joko Widodo</td><td>Penambahan uang pertanggungan</td><td>REQ-010</td><td>MKT-10</td><td class="status-batal">Batal</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>2023-11-14</td><td>Kesehatan</td><td>Corporate</td><td>Baru</td><td>CV. Karya Mandiri</td><td>Asuransi kesehatan kelas premium</td><td>REQ-011</td><td>MKT-12</td><td class="status-realisasi">Realisasi</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Paginasi -->
+<div class="pagination">
+    <button class="page-btn" id="prev-page">&laquo; Previous</button>
+    <button class="page-btn active">1</button>
+    <button class="page-btn">2</button>
+    <button class="page-btn">3</button>
+    <button class="page-btn">...</button>
+    <button class="page-btn">10</button>
+    <button class="page-btn" id="next-page">Next &raquo;</button>
+</div>
+
+<!-- Modal Popup untuk Tambah/Update Data -->
+<div id="plan-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Tambah Register Aplikasi</h2>
+            <span class="close-btn">&times;</span>
+        </div>
+        <form id="plan-form">
+            <div class="form-group">
+                <label for="type-business">Type Business</label>
+                <select id="type-business" required>
+                    <option value="">Pilih Type</option>
+                    <option value="Kendaraan">Kendaraan</option>
+                    <option value="Jiwa">Jiwa</option>
+                    <option value="Kesehatan">Kesehatan</option>
+                    <option value="Properti">Properti</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="segment">Segment</label>
+                <select id="segment" required>
+                    <option value="">Pilih Segment</option>
+                    <option value="Retail">Retail</option>
+                    <option value="Agent">Agent</option>
+                    <option value="Corporate">Corporate</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="request-type">Request Type</label>
+                <select id="request-type" required>
+                    <option value="">Pilih Tipe</option>
+                    <option value="Baru">Baru</option>
+                    <option value="Top Up">Top Up</option>
+                    <option value="Perpanjang">Perpanjang</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="request-name">Request Name</label>
+                <input type="text" id="request-name" required>
+            </div>
+            <div class="form-group">
+                <label for="uraian">Uraian</label>
+                <textarea id="uraian" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="ex-polis">Ex. Polis</label>
+                <input type="text" id="ex-polis">
+            </div>
+            <div class="form-group">
+                <label for="no-request">No. Request</label>
+                <input type="text" id="no-request" required>
+            </div>
+            <div class="form-group">
+                <label for="no-polis">No. Polis</label>
+                <input type="text" id="no-polis">
+            </div>
+            <div class="form-group">
+                <label for="marketing-id">ID Marketing</label>
+                <input type="text" id="marketing-id" required>
+            </div>
+            <div class="form-group">
+                <label for="result">Result</label>
+                <select id="result" required>
+                    <option value="">Pilih Status</option>
+                    <option value="Realisasi">Realisasi</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Batal">Batal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="keterangan">Keterangan</label>
+                <textarea id="keterangan" rows="2"></textarea>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">Simpan</button>
+                <button type="button" class="btn-cancel">Batal</button>
+            </div>
+        </form>
+    </div>
+</div>

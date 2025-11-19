@@ -1,0 +1,148 @@
+<!-- 4 Cards di Atas -->
+<div class="summary-cards">
+    <div class="card">
+        <i class="fas fa-file-alt"></i>
+        <div class="card-value">25</div>
+        <div class="card-title">Plan Draft</div>
+    </div>
+    <div class="card">
+        <i class="fas fa-spinner"></i>
+        <div class="card-value">18</div>
+        <div class="card-title">Plan Proses</div>
+    </div>
+    <div class="card">
+        <i class="fas fa-check-circle"></i>
+        <div class="card-value">42</div>
+        <div class="card-title">Plan Realisasi</div>
+    </div>
+    <div class="card">
+        <i class="fas fa-times-circle"></i>
+        <div class="card-value">5</div>
+        <div class="card-title">Plan Batal</div>
+    </div>
+</div>
+
+<!-- Area Filter dan Tombol Aksi -->
+<div class="action-bar">
+    <div class="filter-controls">
+        <select id="search-option">
+            <option value="all">Cari di Seluruh Kolom</option>
+            <option value="advanced">Pencarian Lanjutan</option>
+        </select>
+        <input type="text" id="search-input" placeholder="Ketik untuk mencari...">
+    </div>
+    <div class="action-buttons">
+        <button class="btn-export"><i class="fas fa-download"></i> Export</button>
+        <button class="btn-add" id="add-plan-btn"><i class="fas fa-plus"></i> Tambah</button>
+    </div>
+</div>
+
+<!-- Pencarian Lanjutan (Awalnya Tersembunyi) -->
+<div class="advanced-search" id="advanced-search" style="display: none;">
+    <div class="date-range">
+        <label>Dari Tanggal:</label>
+        <input type="date" id="date-from">
+        <label>Sampai Tanggal:</label>
+        <input type="date" id="date-to">
+    </div>
+    <div class="status-filter">
+        <label>Status:</label>
+        <select id="status-filter">
+            <option value="">Semua Status</option>
+            <option value="Draft">Draft</option>
+            <option value="Proses">Proses</option>
+            <option value="Realisasi">Realisasi</option>
+            <option value="Batal">Batal</option>
+        </select>
+    </div>
+    <button id="advanced-search-btn" class="btn-search">Cari</button>
+    <button id="reset-search-btn" class="btn-reset">Batal</button>
+</div>
+
+<!-- Tabel Data -->
+<div class="table-container">
+    <table id="marketing-plan-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tanggal</th>
+                <th>Judul Plan</th>
+                <th>Deskripsi</th>
+                <th>Link Foto</th>
+                <th>Target Premi</th>
+                <th>ID Marketing</th>
+                <th>PIC Marketing</th>
+                <th>Status</th>
+                <th>Komentar Supervisor</th>
+                <th>Dibuat</th>
+                <th>Diubah</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data akan diisi oleh JavaScript atau bisa statis -->
+            <tr><td>PLN-001</td><td>2023-11-01</td><td>Q4 Campaign</td><td>Promosi akhir tahun</td><td>link.png</td><td>500jt</td><td>MKT-10</td><td>Andi P.</td><td class="status-draft">Draft</td><td>-</td><td>2023-11-01</td><td>2023-11-01</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>PLN-002</td><td>2023-11-05</td><td>Product Launch</td><td>Peluncuran produk asuransi kesehatan</td><td>link.png</td><td>1M</td><td>MKT-12</td><td>Siti N.</td><td class="status-proses">Proses</td><td>Perlu review materi</td><td>2023-11-05</td><td>2023-11-10</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>PLN-003</td><td>2023-10-20</td><td>Regional Expo</td><td>Pameran di Surabaya</td><td>link.png</td><td>250jt</td><td>MKT-08</td><td>Budi S.</td><td class="status-realisasi">Realisasi</td><td>Sukses</td><td>2023-10-20</td><td>2023-10-28</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>PLN-004</td><td>2023-11-12</td><td>Digital Ads</td><td>Iklan di sosial media</td><td>link.png</td><td>100jt</td><td>MKT-15</td><td>Dewi L.</td><td class="status-draft">Draft</td><td>-</td><td>2023-11-12</td><td>2023-11-12</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>PLN-005</td><td>2023-10-15</td><td>Corporate Gathering</td><td>Gathering klien korporat</td><td>link.png</td><td>750jt</td><td>MKT-11</td><td>Eko P.</td><td class="status-batal">Batal</td><td>Dibatalkan klien</td><td>2023-10-15</td><td>2023-10-18</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>PLN-006</td><td>2023-11-18</td><td>Referral Program</td><td>Program rujukan nasabah</td><td>link.png</td><td>50jt</td><td>MKT-09</td><td>Fajar A.</td><td class="status-proses">Proses</td><td>Mekanisme sedang disusun</td><td>2023-11-18</td><td>2023-11-20</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>PLN-007</td><td>2023-09-30</td><td>School Partnership</td><td>Kerjasama dengan universitas</td><td>link.png</td><td>300jt</td><td>MKT-07</td><td>Rina S.</td><td class="status-realisasi">Realisasi</td><td>MoU sudah ditandatangani</td><td>2023-09-30</td><td>2023-10-15</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>PLN-008</td><td>2023-11-20</td><td>Telemarketing Push</td><td>Penawaran via telepon</td><td>-</td><td>80jt</td><td>MKT-13</td><td>Hendra K.</td><td class="status-draft">Draft</td><td>-</td><td>2023-11-20</td><td>2023-11-20</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>PLN-009</td><td>2023-10-25</td><td>E-Banking Promo</td><td>Kerjasama dengan Bank X</td><td>link.png</td><td>2M</td><td>MKT-14</td><td>Lestari W.</td><td class="status-proses">Proses</td><td>Menunggu persetujuan legal</td><td>2023-10-25</td><td>2023-11-19</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+            <tr><td>PLN-010</td><td>2023-11-21</td><td>Year End Party</td><td>Acara syukuran akhir tahun</td><td>link.png</td><td>150jt</td><td>MKT-10</td><td>Andi P.</td><td class="status-draft">Draft</td><td>-</td><td>2023-11-21</td><td>2023-11-21</td><td><button class="btn-update">Update</button><button class="btn-delete">Delete</button></td></tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Paginasi -->
+<div class="pagination">
+    <button class="page-btn" id="prev-page">&laquo; Previous</button>
+    <button class="page-btn active">1</button>
+    <button class="page-btn">2</button>
+    <button class="page-btn">3</button>
+    <button class="page-btn">...</button>
+    <button class="page-btn">10</button>
+    <button class="page-btn" id="next-page">Next &raquo;</button>
+</div>
+
+<!-- Modal Popup untuk Tambah/Update Data -->
+<div id="plan-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Tambah Marketing Plan</h2>
+            <span class="close-btn">&times;</span>
+        </div>
+        <form id="plan-form">
+            <div class="form-group">
+                <label for="judul">Judul Plan</label>
+                <input type="text" id="judul" required>
+            </div>
+            <div class="form-group">
+                <label for="deskripsi">Deskripsi</label>
+                <textarea id="deskripsi" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="target">Target Premi</label>
+                <input type="text" id="target" placeholder="contoh: 500jt">
+            </div>
+            <div class="form-group">
+                <label for="pic">PIC Marketing</label>
+                <input type="text" id="pic" required>
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status">
+                    <option value="Draft">Draft</option>
+                    <option value="Proses">Proses</option>
+                    <option value="Realisasi">Realisasi</option>
+                    <option value="Batal">Batal</option>
+                </select>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">Simpan</button>
+                <button type="button" class="btn-cancel">Batal</button>
+            </div>
+        </form>
+    </div>
+</div>
