@@ -122,3 +122,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ubah slide secara otomatis setiap 3 detik
     setInterval(nextSlide, 3000);
 });
+
