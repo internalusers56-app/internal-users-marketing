@@ -1,119 +1,95 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- KONFIGURASI SHEETDB ---
-    // GANTI 'YOUR_API_ID' dengan API ID yang Anda dapatkan dari dashboard SheetDB
-    const SHEETDB_API_ID = 'hnryotv4dhvzy'; 
-    const SHEETDB_URL = `https://api.sheetdb.io/v1/api/${SHEETDB_API_ID}`;
+
+    // --- GANTI DENGAN URL WEB APP ANDA DARI GAS ---
+    const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwvL7jTI_L1EMe1DweGtL9-okYsfkv_LXgBv-u4SXjeK8zQHh28a3ACiZUzfoeuK8zC/exec'; // PASTE URL ANDA DI SINI
 
     // --- ELEMEN DOM ---
     const signupForm = document.getElementById('signup-form');
     const signupBtn = document.getElementById('signup-btn');
     const toast = document.getElementById('toast');
 
-    // --- FUNGSI UNTUK MENAMPILKAN NOTIFIKASI (TOAST) ---
-    // Menampilkan pesan sukses atau error kepada pengguna.
+    // --- FUNGSI NOTIFIKASI TOAST ---
     function showToast(message, type = 'success') {
-        toast.className = `toast ${type}`; // Menambah class 'success' atau 'error'
+        toast.className = `toast ${type}`;
         toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i> ${message}`;
         toast.classList.add('show');
-
-        // Sembunyikan toast setelah 4 detik
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 4000);
+        setTimeout(() => { toast.classList.remove('show'); }, 4000);
     }
 
-    // --- LOGIKA UTAMA SAAT FORM DIKIRIM (SIGNUP) ---
+    // --- LOGIKA SIGNUP KE GAS ---
     signupForm.addEventListener('submit', async (event) => {
-        // Mencegah form melakukan reload halaman default
         event.preventDefault();
 
-        // 1. Nonaktifkan tombol dan ubah teks untuk memberi feedback visual
+        // 1. Kunci tombol dan ubah teks
         signupBtn.disabled = true;
         signupBtn.textContent = 'Mendaftarkan...';
 
         try {
-            // 2. Ambil semua nilai dari input form
+            // 2. Ambil nilai dari form
             const fullname = document.getElementById('fullname').value;
             const no_whatsapp = document.getElementById('no_whatsapp').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+            const id_role = document.getElementById('id_role').value;
 
-            // 3. Siapkan data yang akan dikirim ke SheetDB
-            const now = new Date().toISOString();
+            // 3. Siapkan data untuk dikirim
             const newUserData = {
-                id: `users-${Date.now()}`, // Buat ID unik berdasarkan timestamp
                 fullname: fullname,
                 no_whatsapp: no_whatsapp,
                 email: email,
-                // PENTINGAN: Password seharusnya di-hash di sisi server untuk keamanan.
-                // Untuk simulasi ini, kita kirim plain text.
-                password: password, 
-                id_role: "", // Role kosong, menunggu persetujuan admin
-                is_active: false, // User belum aktif hingga disetujui
-                status_approval: 'Pending', // Status awal adalah 'Pending'
-                created_at: now,
-                updated_at: now
+                password: password,
+                id_role: id_role
             };
 
-            // 4. Kirim data ke SheetDB menggunakan metode POST
-            const response = await fetch(SHEETDB_URL, {
+            // 4. Kirim data ke Web App GAS
+            const response = await fetch(GAS_WEB_APP_URL, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(newUserData)
             });
 
-            // 5. Periksa apakah pengiriman berhasil
+            // 5. Proses respons dari GAS
             const result = await response.json();
 
-            if (response.ok && result) {
-                // Jika berhasil, tampilkan pesan sukses
-                showToast('Pendaftaran berhasil! Menunggu persetujuan admin.', 'success');
-                signupForm.reset(); // Kosongkan form
-                
-                // Arahkan pengguna ke halaman login setelah 2 detik
+            if (result.status === 'success') {
+                showToast(result.message, 'success');
+                signupForm.reset();
                 setTimeout(() => {
-                    window.location.href = 'index.html';
+                    window.location.href = 'index.html'; // Arahkan ke login
                 }, 2000);
             } else {
-                // Jika gagal, tampilkan pesan error dari server
-                showToast(result.error || 'Terjadi kesalahan saat mendaftar.', 'error');
+                showToast(result.message, 'error');
             }
 
         } catch (error) {
-            // Tangani error jaringan atau error lainnya
             console.error("Signup Error:", error);
             showToast('Terjadi kesalahan jaringan. Silakan coba lagi.', 'error');
         } finally {
-            // 6. Aktifkan kembali tombol dan kembalikan teks aslinya, terlepas dari hasilnya
+            // 6. Buka kunci tombol setelah proses selesai
             signupBtn.disabled = false;
             signupBtn.textContent = 'Daftar Sekarang';
         }
     });
 
-    // --- LOGIKA UNTUK SLIDESHOW GAMBAR (Sama dengan halaman lain) ---
+    // --- LOGIKA SLIDESHOW (Sama dengan halaman lain) ---
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
     let currentSlide = 0;
 
     function showSlide(index) {
-        // Sembunyikan semua slide dan hapus class 'active' dari semua dots
         slides.forEach(slide => slide.classList.remove('active'));
         dots.forEach(dot => dot.classList.remove('active'));
-
-        // Tampilkan slide dan dot yang dipilih
         slides[index].classList.add('active');
         dots[index].classList.add('active');
     }
 
     function nextSlide() {
-        // Pindah ke slide berikutnya, kembali ke awal jika sudah di akhir
         currentSlide = (currentSlide + 1) % slides.length;
         showSlide(currentSlide);
     }
 
-    // Tambahkan event listener untuk setiap dot agar bisa diklik
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             currentSlide = index;
@@ -121,6 +97,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Ubah slide secara otomatis setiap 3 detik
     setInterval(nextSlide, 3000);
 });
