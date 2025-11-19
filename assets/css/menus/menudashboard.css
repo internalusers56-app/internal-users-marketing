@@ -1,0 +1,83 @@
+/* --- KONTEN DASHBOARD TAMBAHAN --- */
+
+/* Grid untuk seluruh area konten dashboard */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+/* Grid khusus untuk 4 card di atas */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.dashboard-cards .card {
+    text-align: center;
+    padding: 20px;
+}
+
+.dashboard-cards .card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.dashboard-cards .card .card-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.dashboard-cards .card .card-title {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin: 0;
+}
+
+.top-list {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: top-counter;
+}
+
+.top-list li {
+    counter-increment: top-counter;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.top-list li:last-child {
+    border-bottom: none;
+}
+
+.top-list li::before {
+    content: counter(top-counter);
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    font-size: 0.8rem;
+}
+
+.chart-container {
+    position: relative;
+    height: 250px; /* Atur tinggi canvas agar konsisten */
+}
+
+.chart-container canvas {
+    max-height: 100%;
+}
